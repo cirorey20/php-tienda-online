@@ -1,0 +1,15 @@
+#logo{
+
+  background-color: tomato;
+}
+nav{
+  border: 2px solid gray;
+}
+#contCentral{
+  border: 2px solid red;
+  background-color: gray;
+}
+
+footer{
+  border: 2px solid blue;
+}
