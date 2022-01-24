@@ -5,7 +5,7 @@ require_once 'config/db.php';
 require_once 'config/parameters.php';
 require_once 'helpers/utils.php';
 
-//HTML
+//HTML-5
 require_once 'views/layout/header.php';
 require_once 'views/layout/nav.php';
 require_once 'views/layout/contenido.php'; //contenido central

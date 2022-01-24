@@ -1,0 +1,19 @@
+#esta es una configuracion de apache para cambiar la vista de las rutas
+<IfModule mod_rewrite.c>
+# Activar rewrite
+
+RewriteEngine on
+
+# aca diremos cual va a ser la url en que se muestra un error 404
+ErrorDocument 404 http://localhost/ejercicios/tiendaBoyar/Error/
+
+
+# Que las url no la saque si es un directorio(!-d) o es un fichero(!-f)
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+# Reescribir todo a este formato: que ponga aca (.*) lo que haya en el 1
+# Reescribir todo a este formato: que ponga aca (.*) lo que haya en el 2
+RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
+
+</IfModule>
