@@ -1,18 +1,17 @@
 <?php
 require_once 'models/producto.php';
 class CarritoController {
-
   public function index() {
-    echo "Index controlador de carrito controller"."<br>";
     
-    $ele = $_SESSION['carrito'];
-    if (!isset($ele)) {
-      echo "No hay productos en el carrito";
-    } else {
-      var_dump($ele);
-      echo "</br>";
-      echo "<a href='?controller=Carrito&action=delete_all'>limiar carrito</a>";
-    }
+    // $ele = $_SESSION['carrito'];
+    // if (!isset($ele)) {
+    //   echo "No hay productos en el carrito";
+    // } else {
+    //   var_dump($ele);
+    //   // echo "</br>";
+    //   // echo "<a href='?controller=Carrito&action=delete_all'>limiar carrito</a>";
+    // }
+    require_once 'views/carrito/index.php';
   }
 
 
@@ -62,7 +61,7 @@ class CarritoController {
     }
 
   // header('Location:'.base_url."Carrito/index");
-  echo '<script>window.location="'.base_url.'?controller=Carrito&action=index"</script>';
+  echo '<script>window.location="'.base_url.'"</script>';
   }//fin add()
 
   public function remove() {
