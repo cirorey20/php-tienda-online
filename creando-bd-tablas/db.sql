@@ -15,16 +15,12 @@ CREATE TABLE usuarios(
   CONSTRAINT uq_email UNIQUE(email)
 )ENGINE=InnoDb;
 
-INSERT INTO usuarios VALUES(
-  NULL,
-  "Ciro",
-  "Rey",
-  "admin@email.com",
-  "1234",
-  "admin",
-   null,
-   CURRENT DATE
-);
+
+CREATE TABLE categorias(
+ id int(255) auto_increment not null,
+ nombre varchar(255) not null,
+  CONSTRAINT pk_categorias PRIMARY KEY(id)
+)ENGINE=InnoDb;
 
 CREATE TABLE productos(
   id    int(255) auto_increment not null,
@@ -43,6 +39,21 @@ CREATE TABLE productos(
     categoria_id
 ) REFERENCES categorias(id)
 
+)ENGINE=InnoDb;
+
+
+CREATE TABLE direcciones(
+ id    int(255) auto_increment not null,
+ provincia  varchar(255) not null,
+ ciudad varchar(255) not null,
+ localidad varchar(255) not null,
+ calle_altura    varchar(100) not null,
+ calle_numero  varchar(100) not null,
+ piso       varchar(50),
+ c_postal    varchar(100) not null,
+ 
+ CONSTRAINT pk_direcciones PRIMARY KEY(id)
+ 
 )ENGINE=InnoDb;
 
 
@@ -87,3 +98,85 @@ CREATE TABLE lineas_pedidos(
   ) REFERENCES productos(id)
 
 )ENGINE=InnoDb;
+
+
+               /*INSERTAR USUARIO*/
+INSERT INTO usuarios VALUES(
+  NULL,
+  "Ciro",
+  "Rey",
+  "admin@email.com",
+  "1234",
+  "admin",
+   null,
+   CURDATE()
+);
+
+                /*INSERTAR CATEGORÍAS*/
+INSERT INTO categorias VALUES(
+  NULL,
+  "Percusión"
+);
+INSERT INTO categorias VALUES(
+  NULL,
+  "Cuerdas"
+);
+INSERT INTO categorias VALUES(
+  NULL,
+  "Electrico"
+);
+INSERT INTO categorias VALUES(
+  NULL,
+  "Viento"
+);
+INSERT INTO categorias VALUES(
+  NULL,
+  "Acustico"
+);
+
+                  /*INSERTAR PRODUCTOS*/
+INSERT INTO productos VALUES(
+  NULL,
+  "Guitarra",
+  "Criolla Café",
+  406,
+  8,
+  null,
+  null,
+  CURDATE(),
+  2
+);
+INSERT INTO productos VALUES(
+  NULL,
+  "Teclado",
+  "Teclado Casio Gris y Negro",
+  657,
+  2,
+  null,
+  null,
+  CURDATE(),
+  3
+);
+INSERT INTO productos VALUES(
+  NULL,
+  "Batería",
+  "Negra",
+  1206,
+  1,
+  null,
+  null,
+  CURDATE(),
+  1
+);
+INSERT INTO productos VALUES(
+  NULL,
+  "Saxo",
+  "Amarillo",
+  806,
+  4,
+  null,
+  null,
+  CURDATE(),
+  4
+);
+

@@ -4,15 +4,15 @@ class CarritoController {
 
   public function index() {
     echo "Index controlador de carrito controller"."<br>";
-    //para eliminar el ultimo elemento del array usamos array_pop()
-    // array_pop($numeros)// [1,2,3,4]
-
-    //para eliminar un elemento en concreto del array unset()
-    // unset($numeros, 1)//[2,3,4]
-
-    //array_search(elementoABuscar, $arrayDondeVoyABuscar)
+    
     $ele = $_SESSION['carrito'];
-    var_dump($ele);
+    if (!isset($ele)) {
+      echo "No hay productos en el carrito";
+    } else {
+      var_dump($ele);
+      echo "</br>";
+      echo "<a href='?controller=Carrito&action=delete_all'>limiar carrito</a>";
+    }
   }
 
 
@@ -61,7 +61,8 @@ class CarritoController {
       }
     }
 
-  header('Location:'.base_url."Carrito/index");
+  // header('Location:'.base_url."Carrito/index");
+  echo '<script>window.location="'.base_url.'?controller=Carrito&action=index"</script>';
   }//fin add()
 
   public function remove() {
@@ -74,7 +75,8 @@ class CarritoController {
 
   public function delete_all() {
     unset($_SESSION['carrito']);
-    header('Location:'.base_url);
+    // header('Location:'.base_url);
+    echo '<script>window.location="'.base_url.'"</script>';
   }
 
 

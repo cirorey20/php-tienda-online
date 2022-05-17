@@ -19,11 +19,15 @@ function mostrar_error() {
 //ESTO SE LLAMA CONTROLADOR FRONTAL,
 if (isset($_GET['controller'])) {
   $nombre_controlador = $_GET['controller']."Controller";
-} elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+} 
+elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
     $nombre_controlador = controller_default;
-} else {
+} 
+else {
   mostrar_error();
-    exit();
+  exit();
+  // echo "La página no existe";
+  // exit();
 }
 
 if (class_exists($nombre_controlador)) {
@@ -32,14 +36,18 @@ if (class_exists($nombre_controlador)) {
   if (isset($_GET['action']) && method_exists($controlador, $_GET['action'])) {
     $action = $_GET['action'];
     $controlador->$action();
-  } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+  } 
+  elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
       $action_default = action_default;
       $controlador->$action_default();
-  } else {
+  } 
+  else {
+    // echo "La página no existe";
     mostrar_error();
   }
 } else {
   mostrar_error();
+  // echo "La página no existe";
 }
 
 require_once 'views/layout/footer.php';

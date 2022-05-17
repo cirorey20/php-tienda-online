@@ -89,14 +89,17 @@ class ProductoController {
 
       if($guardar) {
         $_SESSION['productoNuevo'] = "completo";
-        header("Location:".base_url.'Producto/gestion');
+        // header("Location:".base_url.'Producto/gestion');
+        echo '<script>window.location="'.base_url.'?controller=Producto&action=gestion"</script>';
       } else {
         $_SESSION['productoNuevo'] = "fallo";
-            header("Location:".base_url.'Producto/crear');
+          // header("Location:".base_url.'Producto/crear');
+          echo '<script>window.location="'.base_url.'?controller=Producto&action=crear"</script>';
       }
 
     } else {
-      header("Location:".base_url.'Producto/crear');
+      // header("Location:".base_url.'Producto/crear');
+      echo '<script>window.location="'.base_url.'?controller=Producto&action=crear"</script>';
     }
   }
 
@@ -157,14 +160,17 @@ class ProductoController {
 
       if($guardar) {
         $_SESSION['productoActualizado'] = "completo";
-        header("Location:".base_url.'Producto/gestion');
+        // header("Location:".base_url.'Producto/gestion');
+        echo '<script>window.location="'.base_url.'?controller=Producto&action=gestion"</script>';
       } else {
         $_SESSION['productoActualizado'] = "fallo";
-            header("Location:".base_url.'Producto/edicion');
+          // header("Location:".base_url.'Producto/edicion');
+          echo '<script>window.location="'.base_url.'?controller=Producto&action=edicion"</script>';
       }
 
       } else {
-      header("Location:".base_url.'Producto/edicion');
+        // header("Location:".base_url.'Producto/edicion');
+        echo '<script>window.location="'.base_url.'?controller=Producto&action=edicion"</script>';
       }
 
 
@@ -188,7 +194,8 @@ class ProductoController {
     } else {
       $_SESSION['delete'] = "failed";
     }
-    header('Location:'.base_url.'Producto/gestion');
+    // header('Location:'.base_url.'Producto/gestion');
+    echo '<script>window.location="'.base_url.'?controller=Producto&action=gestion"</script>';
   }
 
   public function editar() {
@@ -206,7 +213,8 @@ class ProductoController {
       require_once 'views/producto/edicion.php';
 
     } else {
-      header('Location:'.base_url.'Producto/gestion');
+      // header('Location:'.base_url.'Producto/gestion');
+      echo '<script>window.location="'.base_url.'?controller=Producto&action=gestion"</script>';
     }
 
 

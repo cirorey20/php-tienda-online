@@ -1,6 +1,6 @@
 <?php if(isset($editar)): ?>
   <h1>Edicion Del Producto <?= $pro->nombre;?> </h1>
-  <?php $url_action = base_url."Producto/actualizar&id=".$pro->id; ?>
+  <?php $url_action = base_url."?controller=Producto&action=actualizar&id=".$pro->id; ?>
 <?php endif; ?>
 
 

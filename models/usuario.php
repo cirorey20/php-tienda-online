@@ -1,14 +1,14 @@
 <?php
 
 class Usuario {
-  private $id;
+  	private $id;
 	private $nombre;
 	private $apellido;
 	private $email;
 	private $password;
 	private $rol;
 	private $imagen;
-  private $fecha;
+  	private $fecha;
 	private $db;
 
 
@@ -118,14 +118,28 @@ class Usuario {
     $email = $this->email;
     $password = $this->password;
     //comprobar si existe el usuario
+	// echo "</br>";
     $sql = "SELECT * FROM usuarios WHERE email = '$email'";
     $login = $this->db->query($sql);
+
+	// var_dump($login->fetch_object());
+	// $user = $login->fetch_object();
+	// echo "</br>";
+	// echo $user->email;
+	// echo "</br>";
+
+	// echo "</br>";
+	// echo "</br>";
+	// var_dump($login->num_rows);
 
     if($login && $login->num_rows == 1) {
       $usuario = $login->fetch_object();
 
+	  
       //verificar la contraseña
       $verify = password_verify($password, $usuario->password);
+	//   var_dump(password_verify('1234', '1234'));
+    //   echo "</br>";
 
       if($verify == true) {
         $result = $usuario;

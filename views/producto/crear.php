@@ -8,10 +8,10 @@
 
 <?php if(isset($editar)): ?>
   <h1>Editar Producto <?= $pro->nombre;?> </h1>
-  <?php $url_action = base_url."Producto/guardar&id=".$pro->id; ?>
+  <?php $url_action = base_url."?controller=Producto&action=guardar&id=".$pro->id; ?>
 <?php else: ?>
   <h1>Crear Nuevo Producto</h1>
-  <?php $url_action = base_url."Producto/guardar"; ?>
+  <?php $url_action = base_url."?controller=Producto&action=guardar"; ?>
 <?php endif; ?>
 
 
@@ -58,11 +58,10 @@
     <label for="categoria">Categoria</label>
     <select name="categoria_id" required>
       <option value="1">Percusión</option>
-      <option value="2">Viento</option>
-      <option value="3">Cuerda</option>
-      <option value="4">Acústico</option>
-      <option value="5">Eléctrico</option>
-      <option value="6">Voz</option>
+      <option value="2">Cuerdas</option>
+      <option value="3">Electrico</option>
+      <option value="4">Viento</option>
+      <option value="5">Acustico</option>
     </select>
   <?php
    }

@@ -1,5 +1,6 @@
 <?php
 require_once 'models/usuario.php';
+ob_start();
 
 class UsuarioController {
   public function index() {
@@ -63,7 +64,8 @@ class UsuarioController {
     } else {
       $_SESSION['register'] = "Failed";
     }
-    header("Location:".base_url.'Usuario/registro');
+    // header("Location:".base_url.'?controller=Usuario&action=registro');
+    echo '<script>window.location="'.base_url.'?controller=Usuario&action=registro"</script>';
   }
 
   public function accederLogin() {
@@ -75,10 +77,16 @@ class UsuarioController {
       //consulta a la base de datos
 
       $usuario = new Usuario();
+
+      // echo $_POST['password'];
+
       $usuario->setEmail($_POST['email']);
       $usuario->setPassword($_POST['password']);
 
       $identity = $usuario->login();
+      
+      // var_dump($usuario->getEmail());
+      // echo "</br>";
 
       if ($identity && is_object($identity)) {
         $_SESSION['identity'] = $identity;
@@ -91,9 +99,13 @@ class UsuarioController {
       }
 
       //crear un sesion
-
     }
-    header("Location:".base_url.'Usuario/index');
+    // header("Location:".base_url.'?controller=Usuario&action=index');
+    echo '<script>window.location="'.base_url.'?controller=Usuario&action=index"</script>';
+  }
+
+  public function test() {
+    echo '<script>window.location="'.base_url.'"</script>';
   }
 
   public function logout(){
@@ -103,7 +115,8 @@ class UsuarioController {
     if (isset($_SESSION['admin'])) {
       unset($_SESSION['admin']);
     }
-    header("Location:".base_url);
+    // header("Location:".base_url);
+    echo '<script>window.location="'.base_url.'"</script>';
   }
 
 } //fin de la clase

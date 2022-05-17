@@ -1,7 +1,10 @@
 
 
   <h1>Login</h1>
-  <form action="<?=base_url?>Usuario/accederLogin" method="post">
+  <?php
+  //"base_url ?controller=Usuario&action=login"
+  ?><!-- index.php?controller=$1&action=$2 -->
+  <form action="<?=base_url?>?controller=Usuario&action=accederLogin" method="post">
     <label for="email">Email</label>
     <input type="email" name="email" required><br>
 

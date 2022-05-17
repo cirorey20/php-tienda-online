@@ -20,7 +20,7 @@
 <?php Utils::deleteSession('productoActualizado'); ?>
 
 
-<a href="<?=base_url?>Producto/crear">Crear Nuevo producto</a><br><br>
+<a href="<?=base_url?>?controller=Producto&action=crear">Crear Nuevo producto</a><br><br>
 
 <?php
 
@@ -28,8 +28,8 @@
     echo$product->nombre."<br/>";
     echo$product->descripcion."<br/>";
     echo$product->precio."<br/>";?>
-    <a href="<?=base_url?>Producto/eliminar&id=<?=$product->id?>">eliminar</a><br>
-    <a href="<?=base_url?>Producto/editar&id=<?=$product->id?>">editar</a><br><br>
+    <a href="<?=base_url?>?controller=Producto&action=eliminar&id=<?=$product->id?>">eliminar</a><br>
+    <a href="<?=base_url?>?controller=Producto&action=editar&id=<?=$product->id?>">editar</a><br><br>
 
   <?php
   }

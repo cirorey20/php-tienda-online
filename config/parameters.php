@@ -1,6 +1,6 @@
 <?php
 /*Esta sera la base de la url de mi proyecto */
-define("base_url", "http://localhost/ciro/ejercicios/tienda-boyar/");
+define("base_url", "http://localhost:9000/php-tienda-online/");
 
 /*Aqui guardo la url de mi controlador que quiero que se muestre
   en la pagina principal de mi index al principio

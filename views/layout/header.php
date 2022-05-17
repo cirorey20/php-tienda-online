@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<!-- <html lang="es" dir="ltr"> -->
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <title>Tienda Boyar</title>

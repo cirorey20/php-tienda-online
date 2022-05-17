@@ -7,7 +7,7 @@
 <?php endif; ?>
 <?php Utils::deleteSession('register'); ?>
 
-<form action="<?=base_url?>Usuario/guardar" method="post">
+<form action="<?=base_url?>?controller=Usuario&action=guardar" method="post">
   <label for="nombre">Nombre</label>
   <input type="text" name="nombre" ><br>
 
