@@ -112,6 +112,27 @@ class Usuario {
       		return $result;
   }
 
+  public function existeEmail() {
+// Consulta SQL con marcador de posición (?)
+$sql = "SELECT * FROM usuarios WHERE email = ?";
+    
+// Preparar la consulta
+$stmt = $this->db->prepare($sql);
+
+// Vincular el parámetro (s -> string)
+$stmt->bind_param("s", $this->email);
+
+// Ejecutar la consulta
+$stmt->execute();
+
+// Obtener el resultado
+$result = $stmt->get_result();
+
+// Retornar true si existe, de lo contrario false
+return $result->num_rows > 0;
+}
+
+
   public function login() {
 
     $result = false;

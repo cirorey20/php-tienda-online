@@ -70,39 +70,46 @@ class UsuarioController {
 
   public function accederLogin() {
 
-    if(isset($_POST)) {
+    if (isset($_POST)) {
 
+        // Obtener el email y la contraseña del formulario
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-      //identificar al usuario
-      //consulta a la base de datos
+        // Crear una instancia del modelo Usuario
+        $usuario = new Usuario();
 
-      $usuario = new Usuario();
+        // Verificar si el email existe en la base de datos
+        $usuario->setEmail($email);
+        $existeUsuario = $usuario->existeEmail(); // Método que verifica si el email existe
 
-      // echo $_POST['password'];
+        if ($existeUsuario) {
+            // Si el usuario existe, continuar con el proceso de login
+            $usuario->setPassword($password);
+            $identity = $usuario->login();
 
-      $usuario->setEmail($_POST['email']);
-      $usuario->setPassword($_POST['password']);
+            if ($identity && is_object($identity)) {
+                $_SESSION['identity'] = $identity;
 
-      $identity = $usuario->login();
-      
-      // var_dump($usuario->getEmail());
-      // echo "</br>";
+                if ($identity->rol == "admin") {
+                    $_SESSION['admin'] = true;
+                }
 
-      if ($identity && is_object($identity)) {
-        $_SESSION['identity'] = $identity;
-
-        if ($identity->rol == "admin") {
-          $_SESSION['admin'] = true;
+            } else {
+                $_SESSION['error_login'] = 'Identificación fallida';
+            }
+        } else {
+            // Si el email no existe, redirigir a la página de registro
+            $_SESSION['error_login'] = 'El correo no existe, redirigiendo a registro...';
+            echo '<script>window.location="'.base_url.'?controller=Usuario&action=registro"</script>';
+            exit(); // Asegúrate de detener la ejecución aquí
         }
-      } else {
-        $_SESSION['error_login'] = 'identificacion fallida';
-      }
 
-      //crear un sesion
+        // Redirigir a la página de usuario (después del login)
+        echo '<script>window.location="'.base_url.'?controller=Usuario&action=index"</script>';
     }
-    // header("Location:".base_url.'?controller=Usuario&action=index');
-    echo '<script>window.location="'.base_url.'?controller=Usuario&action=index"</script>';
-  }
+}
+
 
   public function test() {
     echo '<script>window.location="'.base_url.'"</script>';
