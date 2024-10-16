@@ -68,6 +68,10 @@ class CarritoController {
     echo "Index controlador de pedido controller";
   }
 
+  public function compra() {
+    echo "realizaste la compra con exito";
+  }
+
   public function delete() {
     echo "Index controlador de pedido controller";
   }
