@@ -1,6 +1,12 @@
 <?php
+// Incluir el autoloader de Composer para cargar las dependencias
+require_once __DIR__ . '/vendor/autoload.php';
+
 function controllers_autoloader($class) {
-  include 'controllers/' . $class . '.php';
+  $file = __DIR__ . '/controllers/' . $class . '.php';
+    if (file_exists($file)) {
+        include $file;
+    }
   //include 'models/' . $class . '.php'; esto creo que no va
 }
 

@@ -1,0 +1,12 @@
+# Ignorar el archivo .env que contiene variables sensibles
+.env
+
+# Ignorar la carpeta vendor que contiene dependencias instaladas por Composer
+/vendor
+
+# Si tienes archivos de Composer que no necesitas subir
+composer.lock
+
+# Ignorar archivos de caché y otros temporales
+*.log
+*.cache

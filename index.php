@@ -24,9 +24,9 @@ elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
     $nombre_controlador = controller_default;
 } 
 else {
+  echo "La página no existe";
   mostrar_error();
   exit();
-  // echo "La página no existe";
   // exit();
 }
 
@@ -42,12 +42,12 @@ if (class_exists($nombre_controlador)) {
       $controlador->$action_default();
   } 
   else {
-    // echo "La página no existe";
+    echo "La página no existe";
     mostrar_error();
   }
 } else {
+  echo "La página no existe";
   mostrar_error();
-  // echo "La página no existe";
 }
 
 require_once 'views/layout/footer.php';

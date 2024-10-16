@@ -1,11 +1,25 @@
 <?php
 //Clase estatica
 
+// Cargar las variables del archivo .env
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Cargar Dotenv
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 class Database {
 
   public static function conectar() {
 
-    $connection = new mysqli('mysql_db', 'root', 'root', 'tienda_boyar');
+    // Usar las variables del archivo .env
+    $host = $_ENV['DB_HOST'];
+    $user = $_ENV['DB_USER'];
+    $pass = $_ENV['DB_PASS'];
+    $db_name = $_ENV['DB_NAME'];
+
+
+    $connection = new mysqli($host, $user, $pass, $db_name);
     $connection->query("SET NAMES 'utf8'");
     
     // $query = 'SELECT * From productos';
